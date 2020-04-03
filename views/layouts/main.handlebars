@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Petition</title>
+        <link rel="stylesheet" href="/styles.css">
+
+    </head>
+    <body>
+
+    <div class="header">
+        <div class="inheader">
+            <a href="/logout" class="headerlinks">log out</a>
+        </div>
+        <div class="inheader">
+            <a href="/edit" class="headerlinks">Edit profile</a>
+        </div>
+        <div class="inheader">
+            <a href="/signers" class="headerlinks">Signers</a>
+        </div>
+        <div class="inheader">
+            <a href="/thanks" class="headerlinks">Thanks</a>
+        </div>
+    </div>
+
+   <div class="container">
+
+       <div class="textbig2">
+           {{#if someInfo}}
+               <div class="intextbig">
+                   Now you can share additional info about yourself :)
+               </div>
+           {{/if}}
+           {{#if moreCoding}}
+               <div class="intextbig">
+                   More coding!!!!!!!!!!!!!!!
+               </div>
+           {{/if}}
+       </div>
+
+        <div class="form">
+               {{{ body }}}
+        </div>
+   </div>
+</body>
+
+
+</html>

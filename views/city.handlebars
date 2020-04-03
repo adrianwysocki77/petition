@@ -1,0 +1,32 @@
+
+
+    <div class="signersbox">
+        <div class="allsigners">
+
+            All signers in city: {{cityOne}}
+
+        </div>
+            {{#city}}
+               {{#if url}}
+               <div class="signers">
+                   <div class="center">
+                      <a href="{{url}}">{{first}} {{last}}</a><div class="left">{{age}}</div>
+                   </div>
+                   <div>
+                       <img src="{{signature}}" class="sign">
+                   </div>
+                </div>
+               {{else}}
+                   <div class="signers">
+                       <div class="center">
+                          {{url}} {{first}} {{last}} <div class="left">{{age}}</div>
+                       </div>
+                       <div>
+                           <img src="{{signature}}" class="sign">
+                       </div>
+                    </div>
+               {{/if}}
+
+            {{/city}}
+
+    </div>

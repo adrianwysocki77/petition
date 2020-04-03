@@ -1,0 +1,14 @@
+{{#if err}}
+    <div class="err">Age is a number!!!!</div>
+{{/if}}
+
+
+<form method="POST">
+    <div class="inputs">
+        <input type='text' name='age' placeholder='Age' autocomplete='off'> <br>
+        <input type="text" name='city' placeholder='City' autocomplete='off'> <br>
+        <input type="text" name='url' placeholder='Home Page' autocomplete='off'> <br>
+    </div>
+    <input type="submit" value="Continue" class="submit">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+</form>

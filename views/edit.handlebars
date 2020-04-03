@@ -1,0 +1,54 @@
+
+
+
+    <!-- <div class="edit"> -->
+        <!-- <div class="editfields"> -->
+            {{#if emailUsed}}
+                Something went wrong!
+            {{/if}}
+
+            <form method="POST">
+                <div class="allsigners">
+                    Edit Profile
+                </div>
+                <div class="input">
+                    <input type='text' name='first' value='{{first}}' autocomplete='off'><div class="inputdesc">First Name</div>
+                </div>
+                <div class="input">
+                    <input type="text" name='last' value='{{last}}' autocomplete='off'><div class="inputdesc">Last Name</div>
+                </div>
+                <div class="input">
+                    <input type="text" name='email' value='{{email}}' autocomplete='off'><div class="inputdesc">Email</div>
+                </div>
+                <div class="input">
+                    <input type="password" name='password' placeholder='******' autocomplete='off'><div class="inputdesc">Password</div>
+                </div>
+                <div class="input">
+                    <input type='text' name='age' value='{{age}}' autocomplete='off'><div class="inputdesc">Age</div>
+                </div>
+                <div class="input">
+                    <input type="text" name='city' value='{{city}}' autocomplete='off'><div class="inputdesc">City</div>
+                </div>
+                <div class="input">
+                    <input type="text" name='url' value='{{url}}' autocomplete='off'><div class="inputdesc">Home Page</div>
+                </div>
+                <div class="input">
+                    <input type="submit" value="update" class="submit">
+                </div>
+                <div>
+                    <img src="{{sign}}" class="sign"><div></div>
+                </div>
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            </form>
+            {{#if sign}}
+                <form action="/delete" method="POST">
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    <button type="submit" name="button">Delete your signature</button>
+                </form>
+            {{/if}}
+            <form action="/deleteaccount" method="POST">
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                <button type="submit" name="button">Delete account</button>
+            </form>
+        <!-- </div> -->
+    <!-- </div> -->

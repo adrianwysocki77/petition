@@ -1,0 +1,33 @@
+<!-- <img src="duck.jpg"> -->
+
+<div class="allsigners">
+    <p>All {{numOfSigns}} signers:<p>
+</div>
+
+<!-- <div class="container"> -->
+    <!-- <div class="signersbox"> -->
+<div class="signersbox">
+        {{#allInfo}}
+           {{#if url}}
+           <div class="signers">
+               <div class="center">
+                  <a href="{{url}}"> {{first}} {{last}}</a><div class="left">{{age}}</div> <a href="/signers/{{city}}">{{city}}</a>
+               </div>
+               <div>
+                   <img src="{{signature}}" class="sign">
+               </div>
+            </div>
+           {{else}}
+               <div class="signers">
+                   <div class="center">
+                       {{first}} {{last}} <div class="left">{{age}}</div> <a href="/signers/{{city}}">{{city}}</a>                       </div>
+                    <div>
+                       <img src="{{signature}}" class="sign">
+                   </div>
+                </div>
+           {{/if}}
+
+        {{/allInfo}}
+</div>
+    <!-- </div> -->
+<!-- </div> -->

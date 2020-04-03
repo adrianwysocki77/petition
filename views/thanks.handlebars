@@ -1,0 +1,36 @@
+<!-- <div class="container"> -->
+
+<form action="/delete" method="POST">
+    <!-- <div class="submitbtn">
+        <img src="chicken.jpg" alt="chicken">
+    </div> -->
+   <div class="gif">
+       <img src="gif.gif">
+   </div>
+    <div class="thankyou">
+        Thank You:
+    </div>
+
+    <div class="name">
+        {{first}}
+        {{last}}
+    </div>
+    <div>
+        <img src="{{sign}}" class="sign">
+    </div>
+    <div class="submitbtn">
+        <button type="submit" name="button">Delete your signature</button>
+    </div>
+    <div>
+         <div class="links">
+             <a href="signers">See all {{numOfSigns}} signers</a>
+         </div>
+         <div class="links">
+             <a href="edit">Edit your profile</a>
+         </div>
+    </div>
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+</form>
+
+
+<!-- </div> -->

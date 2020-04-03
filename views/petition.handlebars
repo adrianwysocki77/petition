@@ -1,0 +1,35 @@
+
+
+
+
+    <form method="POST">
+        <div class="gif">
+            <img src="giphy.gif" alt="chicken">
+        </div>
+
+
+        <div class="firstlast">
+        {{first}} {{last}}
+        </div>
+        <div class="errinform">
+            {{#if err}}
+                Something went wrong, try again!
+            {{/if}}
+        </div>
+        <div class="canvas">
+            <div>
+                <canvas class="canvas" name="canvas" width="200" height="50"></canvas>
+            </div>
+        </div>
+        <input type="hidden" name="sign" value="empty">
+        <div><i>Sign Here</i><div>
+        <div class="submitbtn">
+            <input type="submit" value="Submit" class="submit">
+        </div>
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    </form>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="canvas.js"></script>

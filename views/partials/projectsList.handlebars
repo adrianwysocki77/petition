@@ -1,0 +1,34 @@
+{{#if home}}
+    {{#projects}}
+        <div class="project">
+            <a href="/projects/{{directory}}">
+                <img src="{{directory}}/screen.png">
+                <div class="projectname">{{title}}
+                </div>
+            </a>
+        </div>
+    {{/projects}}
+{{else}}
+    <div class="description-container">
+        <div class="list">
+            <a href="/">Portfolio</a>
+            {{#projects}}
+                <div class="projectslist">
+                    <a href="/projects/{{directory}}">{{title}}</a>
+                </div>
+            {{/projects}}
+        </div>
+        <div class="description">
+            <div class="projectna">{{selectedProject.title}}</div>
+                    <img src="/{{selectedProject.directory}}/screen.png" alt="screenshot">
+
+
+            <div class="description-text">
+                {{selectedProject.description}}
+            </div>
+
+            <button><a href="/{{selectedProject.directory}}" target='_blank'>Launch Project</a></button>
+        </div>
+    </div>
+
+{{/if}}
