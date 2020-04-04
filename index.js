@@ -55,7 +55,8 @@ app.use(function(req, res, next) {
 app.get("/register", (req, res) => {
     console.log("*******************************GET/register");
     res.render("register", {
-        layout: "mainnoheader"
+        layout: "main",
+        loginRegister: true
     });
 });
 
@@ -77,8 +78,9 @@ app.post("/register", (req, res) => {
         password.startsWith(" ")
     ) {
         res.render("register", {
-            layout: "mainnoheader",
-            emptyField: "emptyField"
+            layout: "main",
+            emptyField: "emptyField",
+            loginRegister: true
         });
     } else {
         bcrypt.hash(password).then(hashedPass => {
@@ -102,8 +104,9 @@ app.post("/register", (req, res) => {
                     req.session.userId = undefined;
                     req.session.signed = undefined;
                     res.render("register", {
-                        layout: "mainnoheader",
-                        err
+                        layout: "main",
+                        err,
+                        loginRegister: true
                     });
                 });
         });
@@ -116,7 +119,8 @@ app.get("/login", (req, res) => {
     console.log("******************************GET/login");
 
     res.render("login", {
-        layout: "mainnoheader"
+        layout: "main",
+        loginRegister: true
     });
 });
 
@@ -181,7 +185,8 @@ app.post("/login", (req, res) => {
                         });
                 } else {
                     res.render("login", {
-                        layout: "mainnoheader",
+                        layout: "main",
+                        loginRegister: true,
                         err: "error"
                     });
                 }
@@ -189,8 +194,9 @@ app.post("/login", (req, res) => {
         })
         .catch(err => {
             res.render("login", {
-                layout: "mainnoheader",
-                err
+                layout: "main",
+                err,
+                loginRegister: true
             });
         });
 });

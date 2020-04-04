@@ -3,45 +3,58 @@
     <head>
         <meta charset="utf-8">
         <title>Petition</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/styles.css">
 
     </head>
     <body>
 
-    <div class="header">
-        <div class="inheader">
-            <a href="/logout" class="headerlinks">log out</a>
-        </div>
-        <div class="inheader">
-            <a href="/edit" class="headerlinks">Edit profile</a>
-        </div>
-        <div class="inheader">
-            <a href="/signers" class="headerlinks">Signers</a>
-        </div>
-        <div class="inheader">
-            <a href="/thanks" class="headerlinks">Thanks</a>
-        </div>
-    </div>
-
-   <div class="container">
-
-       <div class="textbig2">
-           {{#if someInfo}}
-               <div class="intextbig">
-                   Now you can share additional info about yourself :)
+        {{#if loginRegister}}
+           <div class="wrapper">
+               <div class="whitetext">
+                   {{{ body }}}
                </div>
-           {{/if}}
-           {{#if moreCoding}}
-               <div class="intextbig">
-                   More coding!!!!!!!!!!!!!!!
+           </div>
+
+
+       {{else}}
+
+       <div class="petitionwrapper">
+           <div class="header">
+               <div class="inheader">
+                   <a href="/logout" class="headerlinks">Logout</a>
                </div>
-           {{/if}}
+               <div class="inheader">
+                   <a href="/edit" class="headerlinks">Edit profile</a>
+               </div>
+               <div class="inheader">
+                   <a href="/signers" class="headerlinks">Signers</a>
+               </div>
+               <div class="inheader">
+                   <a href="/thanks" class="headerlinks">Thanks</a>
+               </div>
+           </div>
+
+               {{#if someInfo}}
+                  <div class="intextbig">
+                      Now you can share additional info about yourself :)
+                  </div>
+              {{/if}}
+              {{#if moreCoding}}
+                  <div class="intextbig">
+                      More coding!!!!!!!!!!!!!!!
+                  </div>
+              {{/if}}
+
+           <div class="form">
+                  {{{ body }}}
+           </div>
        </div>
 
-        <div class="form">
-               {{{ body }}}
-        </div>
-   </div>
+
+        {{/if}}
+
+
 </body>
 
 

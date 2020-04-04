@@ -1,17 +1,28 @@
 
-<div class="form">
-    <div class="errinform">
+
+
+
+
+
+
+<div class="loginflex">
+    <img src="./images/treelogo.svg" class="treelogo">
+    <div class="logintext">
+        Login to sign the petition
+    </div>
+    <div class="text">
         {{#if err}}
             Something went wrong
         {{/if}}
     </div>
     <form method="POST">
+
         <div class="inputs">
             <div class="input">
                 <input type="text" name='email' placeholder='Email Adress' autocomplete='off'>
             </div>
             <div class="input">
-                <input type="password" name='password' placeholder='Password' autocomplete='off'>                 
+                <input type="password" name='password' placeholder='Password' autocomplete='off'>
             </div>
         </div>
         <input type="submit" value="Log in" class="submit">
