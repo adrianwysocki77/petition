@@ -4,56 +4,68 @@
         <meta charset="utf-8">
         <title>Petition</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/styles.css">
 
     </head>
     <body>
 
+
         {{#if loginRegister}}
            <div class="wrapper">
-               <div class="whitetext">
+               <!-- <div class="whitetext"> -->
                    {{{ body }}}
-               </div>
+               <!-- </div> -->
            </div>
 
 
        {{else}}
 
-       <div class="petitionwrapper">
+       <div class="petition">
            <div class="header">
-               <div class="inheader">
-                   <a href="/logout" class="headerlinks">Logout</a>
+               <div class="flexleft">
+                   <img src="./images/treelogo.svg" alt="logo" class="logoinheader">
                </div>
-               <div class="inheader">
-                   <a href="/edit" class="headerlinks">Edit profile</a>
-               </div>
-               <div class="inheader">
-                   <a href="/signers" class="headerlinks">Signers</a>
-               </div>
-               <div class="inheader">
-                   <a href="/thanks" class="headerlinks">Thanks</a>
+               <div class="flex">
+                   <div class="inheader">
+                       <a href="/edit" class="headerlinks">EDIT PROFILE</a>
+                   </div>
+                   <div class="inheader">
+                       <a href="/signers" class="headerlinks">SIGNERS</a>
+                   </div>
+                   <div class="inheader">
+                       <a href="/thanks" class="headerlinks">THANKS</a>
+                   </div>
+                   <div class="inheader">
+                       <a href="/logout" class="headerlinks">LOGOUT</a>
+                   </div>
+                   <div class="hamburgercontainer">
+                       <img src="./images/menu.svg" class="hamburgermenu">
+                   </div>
                </div>
            </div>
 
-               {{#if someInfo}}
-                  <div class="intextbig">
-                      Now you can share additional info about yourself :)
-                  </div>
-              {{/if}}
-              {{#if moreCoding}}
-                  <div class="intextbig">
-                      More coding!!!!!!!!!!!!!!!
-                  </div>
-              {{/if}}
 
-           <div class="form">
-                  {{{ body }}}
-           </div>
+           <div class="petitioncontainer">
+                  {{#if moreCoding}}
+                      <div class="intextbig">
+                          More coding!!!!!!!!!!!!!!!
+                      </div>
+                  {{/if}}
+
+               <div class="form">
+                     {{{ body }}}
+               </div>
+            </div>
+            <div class="menucontainer">
+
+            </div>
        </div>
 
 
-        {{/if}}
 
+
+        {{/if}}
 
 </body>
 

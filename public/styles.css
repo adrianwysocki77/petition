@@ -1,21 +1,26 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: tahoma, arial;
+    /* font-family: tahoma, arial; */
     box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
 }
 
 body {
     /* text-align: center; */
     /* margin-top: 30px; */
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     /* background-color: #94d3ac; */
+    overflow-x: hidden;
+    /* position: relative;
+    width: 100vw; */
+    /* border: 6px solid yellow; */
 }
 
-img {
+/* img {
     width: 50%;
-}
+} */
 
 canvas {
     -webkit-box-shadow: -3px 0px 17px -4px rgba(5, 2, 5, 1);
@@ -63,25 +68,72 @@ a {
 /* Header ////////////////////////////////////////////////////////////////////*/
 .header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 100%;
-    height: 50px;
+    /* margin-top: 30px; */
+    /* padding-right: 30px; */
+    /* margin-bottom: 30px; */
+    height: 95px;
+    /* background-color: rgb(0, 0, 0, 0.3); */
+    /* height: 50px; */
     /* border: 2px solid pink; */
 }
 
 .inheader {
     display: flex;
-    width: 10%;
+    width: 120px;
     justify-content: center;
     align-items: center;
     /* border: 2px solid green; */
 }
+
+.flexleft {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 20%;
+    border: 2px solid pink;
+}
+.flex {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 79%;
+    border: 2px solid pink;
+}
+
+.logoinheader {
+    /* width: 100px;
+    height: 100px; */
+    height: 90%;
+    /* left: 100px; */
+    /* width: 80%; */
+}
 .headerlinks {
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
     /* border: 2px solid yellow; */
     font-size: 15px;
 }
+
+.hamburgercontainer {
+    display: none;
+}
+
+.hamburgermenu {
+    width: 40px;
+    margin-right: 25px;
+}
+
+.menucontainer {
+    position: absolute;
+    right: -50%;
+    height: 100vh;
+    width: 50%;
+    top: 0px;
+    background: white;
+}
+
 /* ////////////////////////////////////////////////////////////////////////// */
 /* REGISTER/LOGIN */
 
@@ -98,6 +150,10 @@ a {
 }
 /* // Register containers */
 
+/* .mobileoverlay {
+
+} */
+
 .gridcontainer {
     position: relative;
     /* width: 300px;
@@ -109,6 +165,9 @@ a {
         "treelogocontainer"
         "descriptioncontainer"
         "inputscontainer";
+    /* margin-top: 50px; */
+    background-color: rgb(0, 0, 0, 0.4);
+    /* border: 2px solid purple; */
 }
 .treelogocontainer {
     grid-area: treelogocontainer;
@@ -128,7 +187,7 @@ a {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .inputscontainer {
@@ -144,9 +203,11 @@ a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: rgb(0, 0, 0, 0.4);
+    padding: 60px;
 }
 .treelogo {
-    width: 300px;
+    width: 250px;
 }
 .logintext {
     color: white;
@@ -172,6 +233,7 @@ input::placeholder {
 }
 .text {
     margin-top: 10px;
+    margin-bottom: 10px;
     font-weight: bold;
     text-align: center;
     color: white;
@@ -182,19 +244,49 @@ input::placeholder {
     text-align: center;
     margin-bottom: 10px;
 }
+
+.loginregister {
+    color: green;
+    font-size: 13px;
+}
 /*  //////////////////////////////////////////////////////////////////////////*/
 /* PETITION NEW */
-.petitionwrapper {
+.petition {
     width: 100vw;
     height: 100vh;
+    position: relative;
     /* border: 2px solid blue; */
-    background: url("./images/background2.jpg");
+    background: url("./images/background1.jpg");
     background-size: cover;
     /* display: flex; */
-    /* justify-content: center;
+    /* justify-content: center;intextbi
     align-items: center; */
-    flex-direction: column;
+    /* flex-direction: column; */
     overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.petitioncontainer {
+    width: 100%;
+    height: 90vh;
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.intextbig {
+    border: 2px solid yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 130px;
+    width: 300px;
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
 }
 
 /* //////////////////////////////////////////////////////////////////////////////// */
@@ -316,13 +408,7 @@ input::placeholder {
     min-height: 10vh;
     text-align: center;
 }
-/* .intextbig {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-} */
+
 .gif {
     text-align: center;
     margin-top: 10px;
@@ -332,11 +418,38 @@ input::placeholder {
     margin-right: 5px;
 }
 /* //////////////////////////////////////////////////////////////////////////////// */
+@media screen and (max-width: 600px) {
+    .hamburgercontainer {
+        display: inline;
+    }
+
+    .inheader {
+        display: none;
+    }
+
+    /* .gridcontainer {
+        height: 100vh;
+        width: 100vw;
+    } */
+}
+
 @media screen and (max-width: 470px) {
     .descriptioncontainer {
-        font-size: 17px;
+        font-size: 16px;
+        /* padding-left: 15px;
+        padding-right: 15px; */
     }
+
+    .flexleft {
+        width: auto;
+    }
+
     .headerlinks {
         font-size: 12px;
+    }
+
+    .loginflex {
+        padding: 30px;
+        width: 100vw;
     }
 }
