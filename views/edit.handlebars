@@ -7,72 +7,66 @@
                 Something went wrong!
             {{/if}}
 
-            <form method="POST">
                 <div class="profile">
-                    <!-- <div class="allsigners">
-                        Edit Profile
-                    </div> -->
-                    <div class="inputdesc">First Name</div>
-                    <div class="input">
-                        <input type='text' name='first' value='{{first}}' autocomplete='off'>
-                    </div>
-                    <div class="inputdesc">Last Name</div>
-                    <div class="input">
-                        <input type="text" name='last' value='{{last}}' autocomplete='off'>
-                    </div>
-                    <div class="inputdesc">Email</div>
-                    <div class="input">
-                        <input type="text" name='email' value='{{email}}' autocomplete='off'>
-                    </div>
-                    <div class="inputdesc">Password</div>
-                    <div class="input">
-                        <input type="password" name='password' placeholder='******' autocomplete='off'>
-                    </div>
-                    <div class="inputdesc">Age</div>
-                    <div class="input">
-                        <input type='text' name='age' value='{{age}}' autocomplete='off'>
-                    </div>
-                    <div class="inputdesc">City</div>
-                    <div class="input">
-                        <input type="text" name='city' value='{{city}}' autocomplete='off'>
-                    </div>
-                    <div class="inputdesc">Home Page</div>
-                    <div class="input">
-                        <input type="text" name='url' value='{{url}}' autocomplete='off'>
-                    </div>
-                    <div class="input">
-                        <input type="submit" value="Update profile" class="submit">
-                    </div>
-                    <div>
-                        <img src="{{sign}}" class="sign"><div></div>
-                    </div>
+                    <form method="POST">
+                        <div class="inputdesc">First Name</div>
+                        <div class="input">
+                            <input type='text' name='first' value='{{first}}' autocomplete='off'>
+                        </div>
+                        <div class="inputdesc">Last Name</div>
+                        <div class="input">
+                            <input type="text" name='last' value='{{last}}' autocomplete='off'>
+                        </div>
+                        <div class="inputdesc">Email</div>
+                        <div class="input">
+                            <input type="text" name='email' value='{{email}}' autocomplete='off'>
+                        </div>
+                        <div class="inputdesc">Password</div>
+                        <div class="input">
+                            <input type="password" name='password' placeholder='******' autocomplete='off'>
+                        </div>
+                        <div class="inputdesc">Age</div>
+                        <div class="input">
+                            <input type='text' name='age' value='{{age}}' autocomplete='off'>
+                        </div>
+                        <div class="inputdesc">City</div>
+                        <div class="input">
+                            <input type="text" name='city' value='{{city}}' autocomplete='off'>
+                        </div>
+                        <div class="inputdesc">Home Page</div>
+                        <div class="input">
+                            <input type="text" name='url' value='{{url}}' autocomplete='off'>
+                        </div>
+                        <div class="input">
+                            <input type="submit" value="Update profile" class="submit">
+                        </div>
 
-                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                        <div class="signcontainer">
+                            <img src="{{sign}}" class="sign">
+                        </div>
+
+                        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    </form>
 
                     {{#if sign}}
-                        <!-- <form action="/delete" method="POST">
-                            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                        <form action="/delete" method="POST">
                             <button type="submit" name="button" class="buttoninthanks">Delete your signature</button>
-                        </form> -->
-
-                        <a href="delete">
-                            <div class="buttoninthanks">
-                                Delete your signature
-                            </div>
-                        </a>
+                            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                        </form>
                     {{/if}}
-                    <!-- <form action="/deleteaccount" method="POST">
-                        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+                    <form action="/deleteaccount" method="POST">                        
                         <button type="submit" name="button" class="buttoninthanks">Delete account</button>
-                    </form> -->
-
-                    <a href="deleteaccount">
-                        <div class="buttoninthanks">
-                            Delete account
-                        </div>
-                    </a>
+                        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    </form>
                 </div>
-            </form>
 
-        <!-- </div> -->
-    <!-- </div> -->
+
+
+
+
+            <!-- <a href="deleteaccount">
+                <div class="buttoninthanks">
+                    Delete account
+                </div>
+            </a> -->

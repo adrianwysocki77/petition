@@ -392,6 +392,12 @@ input::placeholder {
     color: white;
     font-weight: bold;
     margin-top: 10px;
+    text-align: center;
+}
+
+.signcontainer {
+    display: flex;
+    justify-content: center;
 }
 /* ////////////////////////////////////////////////////////////////////////// */
 /* SIGNERS */
@@ -475,13 +481,15 @@ input::placeholder {
 } */
 .textbig2 {
     display: flex;
-    font-size: 35px;
-    /* color: white; */
+    font-size: 30px;
+    color: white;
     font-weight: 700;
     align-items: center;
     justify-content: center;
     min-height: 10vh;
     text-align: center;
+    padding-bottom: 300px;
+    max-width: 400px;
 }
 
 .gif {
@@ -511,7 +519,7 @@ input::placeholder {
     } */
 
     .header {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
 }
 
