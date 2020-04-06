@@ -1,27 +1,28 @@
 
 <form action="/delete" method="POST">
-    <div class="profile">        
+    <div class="profile">
         <div class="signpetition">
             <div class="user">
                {{first}} {{last}},
             </div>
-            <br> thank you for signing
+             thank you for signing
         </div>
         <div>
             <img src="{{sign}}" class="sign">
         </div>
         <div class="submitbtn">
-            <button type="submit" name="button">Delete your signature</button>
+            <input type="submit" value="Delete your signature" class="buttoninthanks">
         </div>
-        <div>
-             <div class="links">
-                 <a href="signers">See all {{numOfSigns}} signers</a>
-             </div>
-             <div class="links">
-                 <a href="edit">Edit your profile</a>
-             </div>
-        </div>
-            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <a href="signers">
+            <div class="buttoninthanks">
+                See all {{numOfSigns}} signers
+            </div>
+        </a>
+        <a href="edit">
+            <div class="buttoninthanks">
+                Edit your profile
+            </div>
+        </a>
+         <input type="hidden" name="_csrf" value="{{csrfToken}}">
     </div>
-
 </form>
