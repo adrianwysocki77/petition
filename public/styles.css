@@ -132,8 +132,28 @@ a {
     width: 50%;
     top: 0px;
     background: white;
+    z-index: 10;
+    transition: 2s;
 }
 
+.move {
+    transition-property: transform;
+    transition-duration: 2s;
+    transform: translateX(-100%);
+}
+
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    /* background: pink; */
+}
+
+.zindex {
+    z-index: -10;
+}
 /* ////////////////////////////////////////////////////////////////////////// */
 /* REGISTER/LOGIN */
 
@@ -421,6 +441,9 @@ input::placeholder {
 @media screen and (max-width: 600px) {
     .hamburgercontainer {
         display: inline;
+        /* height: 100%;
+        display: flex;
+        align-items: center; */
     }
 
     .inheader {
