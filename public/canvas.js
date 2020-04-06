@@ -19,6 +19,7 @@ function finishedPosition() {
 function draw(e) {
     if (!painting) return;
     ctx.lineWidth = 3;
+    ctx.strokeStyle = "white";
     ctx.lineCap = "round";
     // ctx.strokeStyle = "white";
     ctx.lineTo(e.offsetX, e.offsetY);

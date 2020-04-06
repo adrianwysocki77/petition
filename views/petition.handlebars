@@ -4,26 +4,29 @@
 
     <form method="POST">
 
-
-        <div class="firstlast">
-        {{first}} {{last}}
-        </div>
-        <div class="errinform">
-            {{#if err}}
-                Something went wrong, try again!
-            {{/if}}
-        </div>
-        <div class="canvas">
-            <div>
-                <canvas class="canvas" name="canvas" width="200" height="50"></canvas>
+        <div class="profile">
+            <div class="signpetition">
+                <div class="user">
+                    Dear {{first}},
+                </div> 
+                here you can sign the petition:
             </div>
+            <div class="errinform">
+                {{#if err}}
+                    Something went wrong, try again!
+                {{/if}}
+            </div>
+            <div class="canvas">
+                <div>
+                    <canvas class="canvas" name="canvas" width="250" height="70"></canvas>
+                </div>
+            </div>
+            <input type="hidden" name="sign" value="empty">
+            <div class="submitbtn">
+                <input type="submit" value="Submit" class="submit">
+            </div>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
         </div>
-        <input type="hidden" name="sign" value="empty">
-        <div><i>Sign Here</i><div>
-        <div class="submitbtn">
-            <input type="submit" value="Submit" class="submit">
-        </div>
-        <input type="hidden" name="_csrf" value="{{csrfToken}}">
     </form>
 
 
