@@ -739,13 +739,13 @@ app.get("/", (req, res) => {
 });
 ////////////////////////////////////////////////////////////////////////////////
 // 10. CITIES DYNAMIC ROUTE
-app.get("/signersin/:city", (req, res) => {
-    console.log("*************************GET/signersin/:city");
-    let city = req.params.city;
+app.post("/signersin", (req, res) => {
+    console.log("*************************GET/signersin");
+    // let city = req.params.city;
     // let city = "Berlin";
-    //
-    // console.log("city!!!!: ", city);
-    //
+    let city = req.body.button;
+    console.log("city!!!!: ", city);
+
     if (req.session.userId && req.session.signed) {
         db.getPeopleByCity(city)
             .then(result => {
@@ -756,7 +756,8 @@ app.get("/signersin/:city", (req, res) => {
                 console.log("city One: ", cityOne);
 
                 res.render("city", {
-                    cities
+                    cities,
+                    city
                 });
             })
             .catch(err => {

@@ -441,6 +441,12 @@ input::placeholder {
     max-width: 95%;
 }
 
+.nobutton {
+    background: transparent;
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid transparent;
+}
 /* .signers {
     display: flex;
     justify-content: center;

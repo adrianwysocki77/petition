@@ -6,47 +6,46 @@
 <!-- <div class="signersbox"> -->
     <div class="signerscontainer">
 
-        <form action="signersin/Berlin" method="POST">
-            <button type="submit" name="button" class="nobutton">in city</button>
-            <input type="hidden" name="_csrf" value="{{csrfToken}}">
-        </form>
 
-        <a href="signersin/Berlin">
-            <div class="buttoninthanks">
-                Edit your profile
-            </div>
-        </a>
+
+
+
 
         <div class="allsigners">
             All {{numOfSigns}} signers:
         </div>
-        <!-- {{#allInfo}}
-           {{#if url}}
-                <div class="inline">
-                   <div>
-                       <a href="{{url}}"> {{first}} {{last}} &nbsp;</a>
-                   </div>
-                   <div>
-                       age: {{age}} <a href="signersin/{{city}}">city: {{city}}</a>
-                   </div>
-                </div>
-
-
-           {{else}}
-               <div class="inline">
-                   <div>
-                         !!!{{first}} {{last}} {{#if age}} age: {{age}} {{/if}}
-                   </div>
-                   {{#if city}}
+        <form action="signersin" method="POST">
+            {{#allInfo}}
+               {{#if url}}
+                    <div class="inline">
                        <div>
-                            <a href="signersin/{{city}}">&nbsp;city: {{city}}</a>
+                           <a href="{{url}}"> {{first}} {{last}} &nbsp;</a>
                        </div>
-                   {{/if}}
-               </div>
+                       <div>
+                           age: {{age}} city:
+                           <button type="submit" name="button" class="nobutton" value="{{city}}">{{city}}</button>
 
-           {{/if}}
+                       </div>
+                    </div>
 
-        {{/allInfo}} -->
+
+               {{else}}
+                   <div class="inline">
+                       <div>
+                             {{first}} {{last}} {{#if age}} age: {{age}} {{/if}}
+                       </div>
+                       {{#if city}}
+                           <div>
+                                 <button type="submit" name="button" class="nobutton" value="{{city}}">{{city}}</button>
+                           </div>
+                       {{/if}}
+                   </div>
+
+               {{/if}}
+
+            {{/allInfo}}
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        </form>
     </div>
 
 
