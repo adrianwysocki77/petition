@@ -295,6 +295,7 @@ input::placeholder {
     flex-direction: column;
     background-color: rgb(0, 0, 0, 0.4);
     padding: 30px;
+    max-width: 95%;
 }
 
 .profilecontainer {
@@ -413,7 +414,34 @@ input::placeholder {
 }
 /* ////////////////////////////////////////////////////////////////////////// */
 /* SIGNERS */
-.signers {
+.allsigners {
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.inline {
+    display: flex;
+    max-width: 300px;
+    overflow-x: hidden;
+    align-items: flex-start;
+    /* border: 2px solid yellow; */
+    color: white;
+}
+
+.signerscontainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: rgb(0, 0, 0, 0.4);
+    padding: 30px;
+    max-width: 95%;
+}
+
+/* .signers {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -434,11 +462,8 @@ input::placeholder {
 }
 .signersbox {
     display: flex;
-    /* flex-direction: row; */
     width: 90%;
     height: 90%;
-    /* flex-wrap: wrap;
-    justify-content: center; */
     border: 2px solid pink;
 }
 .allsigners {
@@ -447,7 +472,8 @@ input::placeholder {
     font-weight: bold;
     width: 100%;
     text-align: center;
-}
+} */
+
 /* ///////////////////////////////////////////////////////////////////////// */
 .err {
     font-style: italic;
@@ -506,14 +532,6 @@ input::placeholder {
     max-width: 400px;
 }
 
-.gif {
-    text-align: center;
-    margin-top: 10px;
-}
-.left {
-    margin-left: 5px;
-    margin-right: 5px;
-}
 /* //////////////////////////////////////////////////////////////////////////////// */
 @media screen and (max-width: 600px) {
     .hamburgercontainer {

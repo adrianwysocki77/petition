@@ -4,32 +4,49 @@
 
 
 <!-- <div class="signersbox"> -->
-    <div class="profile">
-        <div class="user">
-            <p>All {{numOfSigns}} signers:<p>
+    <div class="signerscontainer">
+
+        <form action="signersin/Berlin" method="POST">
+            <button type="submit" name="button" class="nobutton">in city</button>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        </form>
+
+        <a href="signersin/Berlin">
+            <div class="buttoninthanks">
+                Edit your profile
+            </div>
+        </a>
+
+        <div class="allsigners">
+            All {{numOfSigns}} signers:
         </div>
-        {{#allInfo}}
+        <!-- {{#allInfo}}
            {{#if url}}
-           <!-- <div class="signers">
-               <div class="center"> -->
-                  <a href="{{url}}"> {{first}} {{last}}</a><div class="left">age: {{age}}</div> <a href="/signers/{{city}}">from: {{city}}</a>
-               <!-- </div> -->
-               <!-- <div>
-                   <img src="{{signature}}" class="sign">
-               </div> -->
-            <!-- </div> -->
+                <div class="inline">
+                   <div>
+                       <a href="{{url}}"> {{first}} {{last}} &nbsp;</a>
+                   </div>
+                   <div>
+                       age: {{age}} <a href="signersin/{{city}}">city: {{city}}</a>
+                   </div>
+                </div>
+
+
            {{else}}
-               <!-- <div class="signers">
-                   <div class="center"> -->
-                       {{first}} {{last}} <div class="left">{{age}}</div> <a href="/signers/{{city}}">{{city}}</a>
-                   <!-- </div> -->
-                    <!-- <div>
-                       <img src="{{signature}}" class="sign">
-                   </div> -->
-                <!-- </div> -->
+               <div class="inline">
+                   <div>
+                         !!!{{first}} {{last}} {{#if age}} age: {{age}} {{/if}}
+                   </div>
+                   {{#if city}}
+                       <div>
+                            <a href="signersin/{{city}}">&nbsp;city: {{city}}</a>
+                       </div>
+                   {{/if}}
+               </div>
+
            {{/if}}
 
-        {{/allInfo}}
+        {{/allInfo}} -->
     </div>
 
 

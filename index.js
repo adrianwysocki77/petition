@@ -739,24 +739,29 @@ app.get("/", (req, res) => {
 });
 ////////////////////////////////////////////////////////////////////////////////
 // 10. CITIES DYNAMIC ROUTE
-app.get("/signers/:city", (req, res) => {
-    console.log("*************************GET/signers/:city");
-    var city = req.params.city;
-    console.log("cities!!!!: ", city);
-
+app.get("/signersin/:city", (req, res) => {
+    console.log("*************************GET/signersin/:city");
+    let city = req.params.city;
+    // let city = "Berlin";
+    //
+    // console.log("city!!!!: ", city);
+    //
     if (req.session.userId && req.session.signed) {
         db.getPeopleByCity(city)
             .then(result => {
                 console.log("getPeopleByCity: ", result.rows);
-                let city = result.rows;
+                let cities = result.rows;
                 let cityOne = result.rows[0].city;
+                console.log("city in get people by: ", city);
+                console.log("city One: ", cityOne);
+
                 res.render("city", {
-                    city,
-                    cityOne
+                    cities
                 });
             })
             .catch(err => {
                 console.log("err in getPeopleByCity: ", err);
+                // res.redirect("/thanks");
             });
     } else if (req.session.userId == undefined) {
         req.session.signed = undefined;
@@ -766,7 +771,6 @@ app.get("/signers/:city", (req, res) => {
     }
 });
 
-app.listen(process.env.PORT || 8090, () => console.log("running"));
 ////////////////////////////////////////////////////////////////////////////////
 // 11. LOGOUT
 app.get("/logout", (req, res) => {
@@ -774,3 +778,13 @@ app.get("/logout", (req, res) => {
     req.session.signed = undefined;
     res.redirect("/login");
 });
+
+// app.get("/test/:test", (req, res) => {
+//     let test = req.params.test;
+//     console.log("test!!!: ", test);
+//     // res.render("city", {
+//     //     city: "Berlin"
+//     // });
+// });
+
+app.listen(process.env.PORT || 8090, () => console.log("running"));
