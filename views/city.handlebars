@@ -1,31 +1,56 @@
 
 
-    <div class="signersbox">
+    <div class="signerscontainer">
         <div class="allsigners">
-            All signers in city:
+            All signers from:
             {{city}}
         </div>
 
             {{#cities}}
                {{#if url}}
-               <div class="signers">
-                   <div class="center">
-                      <a href="{{url}}">{{first}} {{last}}</a><div class="left">{{age}}</div>
-                   </div>
+               <div class="inline">
                    <div>
-                       <img src="{{signature}}" class="sign">
+                      <a href="{{url}}" class="link">!!{{first}} {{last}},</a>
                    </div>
+                   <div class="beige">{{#if age}} &nbsp;age:&nbsp;{{age}} {{/if}}</div>
                 </div>
                {{else}}
-                   <div class="signers">
-                       <div class="center">
-                          {{url}} {{first}} {{last}} <div class="left">{{age}}</div>
-                       </div>
-                       <div>
-                           <img src="{{signature}}" class="sign">
+                   <div class="inline">
+                       <div class="beidge">
+                          {{first}} {{last}}, {{#if age}} &nbsp;age:&nbsp;{{age}} {{/if}}
                        </div>
                     </div>
                {{/if}}
             {{/cities}}
 
     </div>
+
+<!--
+    {{#allInfo}}
+       {{#if url}}
+            <div class="inline">
+               <div>
+                   <a href="{{url}}" class="link"> {{first}} {{last}}</a>&nbsp;
+               </div>
+               <div class="beige">
+                   age: {{age}} city:
+                   <button type="submit" name="button" class="nobutton link" value="{{city}}">{{city}}</button>
+               </div>
+            </div>
+
+
+       {{else}}
+           <div class="inline beige">
+               <div>
+                    {{first}} {{last}} {{#if age}} age: {{age}}&nbsp;{{/if}}
+               </div>
+               {{#if city}}
+                   <div>
+                         <button type="submit" name="button" class="nobutton link" value="{{city}}">{{city}}</button>
+                   </div>
+               {{/if}}
+           </div>
+
+       {{/if}}
+
+    {{/allInfo}} -->

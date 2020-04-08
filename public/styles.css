@@ -46,7 +46,7 @@ a {
     -moz-box-shadow: -3px 0px 17px -4px rgba(5, 2, 5, 1);
     box-shadow: -3px 0px 17px -4px rgba(5, 2, 5, 1);
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 20px;
     background-color: rgb(255, 255, 255, 0.4);
 }
 
@@ -424,11 +424,14 @@ input::placeholder {
 
 .inline {
     display: flex;
-    max-width: 300px;
+    width: 300px;
+    /* width: 100%; */
     overflow-x: hidden;
     align-items: flex-start;
     /* border: 2px solid yellow; */
     color: white;
+    margin: 5px;
+    border-bottom: 1px solid white;
 }
 
 .signerscontainer {
@@ -446,6 +449,19 @@ input::placeholder {
     margin: 0px;
     padding: 0px;
     border: 1px solid transparent;
+}
+
+.link {
+    /* text-decoration: underline; */
+    color: white;
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.beige {
+    /* color: #f5f5dc; */
+    color: #faebd7;
 }
 /* .signers {
     display: flex;
@@ -466,12 +482,7 @@ input::placeholder {
     width: 100%;
     justify-content: center;
 }
-.signersbox {
-    display: flex;
-    width: 90%;
-    height: 90%;
-    border: 2px solid pink;
-}
+
 .allsigners {
     font-size: 16px;
     color: #655c56;

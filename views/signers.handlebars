@@ -5,12 +5,6 @@
 
 <!-- <div class="signersbox"> -->
     <div class="signerscontainer">
-
-
-
-
-
-
         <div class="allsigners">
             All {{numOfSigns}} signers:
         </div>
@@ -19,24 +13,23 @@
                {{#if url}}
                     <div class="inline">
                        <div>
-                           <a href="{{url}}"> {{first}} {{last}} &nbsp;</a>
+                           <a href="{{url}}" class="link"> {{first}} {{last}}</a>&nbsp;
                        </div>
-                       <div>
+                       <div class="beige">
                            age: {{age}} city:
-                           <button type="submit" name="button" class="nobutton" value="{{city}}">{{city}}</button>
-
+                           <button type="submit" name="button" class="nobutton link" value="{{city}}">{{city}}</button>
                        </div>
                     </div>
 
 
                {{else}}
-                   <div class="inline">
+                   <div class="inline beige">
                        <div>
-                             {{first}} {{last}} {{#if age}} age: {{age}} {{/if}}
+                            {{first}} {{last}} {{#if age}} age: {{age}}&nbsp;{{/if}}
                        </div>
                        {{#if city}}
                            <div>
-                                 <button type="submit" name="button" class="nobutton" value="{{city}}">{{city}}</button>
+                                 <button type="submit" name="button" class="nobutton link" value="{{city}}">{{city}}</button>
                            </div>
                        {{/if}}
                    </div>
