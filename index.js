@@ -254,16 +254,17 @@ app.post("/petition", (req, res) => {
                         console.log("results.rows[0]", results.rows[0]);
                         let first = result.rows[0].first;
                         let last = result.rows[0].last;
-                        db.getAll().then(fromSignatures => {
-                            let numOfSigns = fromSignatures.rows.length;
-                            res.render("thanks", {
-                                layout: "main",
-                                first,
-                                last,
-                                sign,
-                                numOfSigns
-                            });
-                        });
+                        // db.getAll().then(fromSignatures => {
+                        //     let numOfSigns = fromSignatures.rows.length;
+                        //     res.render("thanks", {
+                        //         layout: "main",
+                        //         first,
+                        //         last,
+                        //         sign,
+                        //         numOfSigns
+                        //     });
+                        // });
+                        res.redirect("/thanks");
                     })
                     .catch(err => {
                         res.render("petition", {
