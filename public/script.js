@@ -15,3 +15,8 @@ x[0].addEventListener("click", function() {
     overlay[0].classList.add("zindex");
     menucontainer[0].classList.remove("move");
 });
+
+window.addEventListener("popstate", function(event) {
+    console.log(event);
+    console.log("url changed");
+});

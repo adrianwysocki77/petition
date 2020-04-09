@@ -1,8 +1,7 @@
 
 
 
-    <!-- <div class="edit"> -->
-        <!-- <div class="editfields"> -->
+
             {{#if emailUsed}}
                 Something went wrong!
             {{/if}}
@@ -55,18 +54,8 @@
                         </form>
                     {{/if}}
 
-                    <form action="/deleteaccount" method="POST">                        
+                    <form action="/deleteaccount" method="POST">
                         <button type="submit" name="button" class="buttoninthanks">Delete account</button>
                         <input type="hidden" name="_csrf" value="{{csrfToken}}">
                     </form>
                 </div>
-
-
-
-
-
-            <!-- <a href="deleteaccount">
-                <div class="buttoninthanks">
-                    Delete account
-                </div>
-            </a> -->

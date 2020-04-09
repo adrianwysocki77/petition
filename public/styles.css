@@ -7,15 +7,7 @@
 }
 
 body {
-    /* text-align: center; */
-    /* margin-top: 30px; */
-    /* display: flex;
-    flex-direction: column; */
-    /* background-color: #94d3ac; */
     overflow-x: hidden;
-    /* position: relative;
-    width: 100vw; */
-    /* border: 6px solid yellow; */
 }
 
 /* img {
@@ -53,6 +45,11 @@ a {
 .text {
     font-size: 13px;
 }
+
+/* .textmargin {
+    font-size: 13px;
+    margin-bottom: 10px;
+} */
 /* MAIN */
 /* .container {
     display: flex;
@@ -202,7 +199,8 @@ a {
         "treelogocontainer"
         "descriptioncontainer"
         "inputscontainer";
-    /* margin-top: 50px; */
+    margin-top: 50px;
+    margin-bottom: 20px;
     background-color: rgb(0, 0, 0, 0.4);
     /* border: 2px solid purple; */
 }
@@ -425,10 +423,8 @@ input::placeholder {
 .inline {
     display: flex;
     width: 300px;
-    /* width: 100%; */
     overflow-x: hidden;
     align-items: flex-start;
-    /* border: 2px solid yellow; */
     color: white;
     margin: 5px;
     border-bottom: 1px solid white;
@@ -452,7 +448,6 @@ input::placeholder {
 }
 
 .link {
-    /* text-decoration: underline; */
     color: white;
     font-weight: 900;
     font-size: 15px;
@@ -460,82 +455,10 @@ input::placeholder {
 }
 
 .beige {
-    /* color: #f5f5dc; */
     color: #faebd7;
 }
-/* .signers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 4px;
-    width: 250px;
-    height: 95px;
-    background-color: #effcef;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.center {
-    display: flex;
-    font-weight: bold;
-    width: 100%;
-    justify-content: center;
-}
-
-.allsigners {
-    font-size: 16px;
-    color: #655c56;
-    font-weight: bold;
-    width: 100%;
-    text-align: center;
-} */
-
 /* ///////////////////////////////////////////////////////////////////////// */
-.err {
-    font-style: italic;
-    color: red;
-}
-.thankyou {
-    margin-top: 20px;
-    font-weight: bold;
-}
-.king {
-    font-size: 12px;
-}
-.name {
-    font-size: 15px;
-    color: #655c56;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-.marginleft {
-    /* margin-left: 30px; */
-    object-fit: contain;
-    width: 100%;
-}
-.edit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.editfields {
-    width: 40%;
-    padding-top: 10px;
-}
-/* MAIN NO HEADER */
-/* .textbig {
-    margin-top: 2%;
-    margin-bottom: 2%;
-    display: flex;
-    font-size: 35px; */
-/* color: white; */
-/* font-weight: 700;
-    align-items: center;
-    justify-content: center;
-} */
+/* DELETE ACCOUNT */
 .textbig2 {
     display: flex;
     font-size: 30px;
@@ -553,34 +476,25 @@ input::placeholder {
 @media screen and (max-width: 600px) {
     .hamburgercontainer {
         display: inline;
-        /* height: 100%;
-        display: flex;
-        align-items: center; */
     }
 
     .inheader {
         display: none;
     }
 
-    /* .gridcontainer {
-        height: 100vh;
-        width: 100vw;
-    } */
-
     .header {
         margin-bottom: 40px;
+    }
+
+    .gridcontainer {
+        margin-top: 0px;
+        margin-bottom: 20px;
     }
 }
 
 @media screen and (max-width: 470px) {
     .descriptioncontainer {
         font-size: 16px;
-        /* padding-left: 15px;
-        padding-right: 15px; */
-    }
-
-    .flexleft {
-        /* width: auto; */
     }
 
     .headerlinks {

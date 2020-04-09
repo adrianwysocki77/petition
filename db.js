@@ -4,10 +4,6 @@ const db = spicedPg(
     process.env.DATABASE_URL || "postgres:postgres:postgres@localhost:5432/sign"
 );
 
-// exports.getOneSign = function() {
-//     return db.query(`SELECT id, first FROM sign`).then(({ rows }) => rows);
-// };
-
 exports.showAllFromCity = function(city) {
     return db
         .query(
@@ -197,39 +193,3 @@ exports.getAllInfo = function() {
         `
     );
 };
-
-//
-// exports.getAllForEditSecond = function(user_id) {
-//     return db.query(
-//
-//         SELECT * FROM TableA
-//         FULL OUTER JOIN TableB
-//         ON TableA.name = TableB.name
-//         SELECT first, last, age, city, url,
-//
-//         `SELECT first, last, age, city, url
-//         FROM users
-//         JOIN
-//         signatures
-//         ON
-//         users.id = signatures.user_id
-//         FULL OUTER JOIN
-//         user_profiles
-//         ON
-//         user_profiles.user_id = signatures.user_id
-//         `
-//     );
-// };
-
-// INSERT INTO user_profiles (age, city, url, user_id)
-// VALUE ($1, $2, $3, $4)
-//
-// UPDATE user_profiles SET age =1$, city = $2, url = $3
-// WHERE user_id = $4;
-//
-//     INSERT INTO user_profiles (age, city, url, user_id)
-//     VALUES ($1, $2, $3, $4)
-//     ON CONFLICT (user_id)
-//     DO UPDATE user_profile SET age =$1, city =$2, url =$3
-//
-// DELETE FROM users WHERE id = $1;

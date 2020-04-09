@@ -66,7 +66,6 @@ app.post("/register", (req, res) => {
     const last = req.body.last;
     const email = req.body.email;
     var password = req.body.password;
-    //console.log(first, last, email, password);
     if (
         first == "" ||
         last == "" ||
@@ -84,13 +83,10 @@ app.post("/register", (req, res) => {
         });
     } else {
         bcrypt.hash(password).then(hashedPass => {
-            console.log("hashedPass: ", hashedPass);
             db.addUsers(first, last, email, hashedPass)
                 .then(results => {
                     req.session.userId = results.rows[0].id;
                     req.session.signed = false;
-                    console.log("in addUsers");
-                    console.log("req.session.userId: ", req.session.userId);
                     db.addProfile("", "", "", req.session.userId)
                         .then(() => {
                             res.redirect("/profile");
@@ -130,42 +126,29 @@ app.post("/login", (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
-    console.log("email: ", email);
-    console.log("password", password);
-
     db.getUsers(email)
         .then(results => {
-            // console.log("results.rows[0].password", results.rows[0].password);
-            // console.log("email", email);
             bcrypt.compare(password, results.rows[0].password).then(result => {
-                // console.log("compareing result: ", result);
                 if (result) {
                     req.session.userId = results.rows[0].id;
-                    console.log(" user id in cookie: ", results.rows[0].id);
-
                     db.checkSign(req.session.userId)
                         .then(val => {
-                            console.log("val.rows.length: ", val.rows.length);
                             if (val.rows.length > 0) {
-                                console.log("there is signature");
                                 req.session.signed = true;
                                 db.getName(req.session.userId)
                                     .then(name => {
                                         let first = name.rows[0].first;
                                         let last = name.rows[0].last;
                                         let sign = val.rows[0].signature;
-                                        console.log("sign: ", sign);
                                         db.getAll().then(fromSignatures => {
                                             var numOfSigns =
                                                 fromSignatures.rows.length;
-                                            console.log(numOfSigns);
                                             res.render("thanks", {
                                                 layout: "main",
                                                 first,
                                                 last,
                                                 sign,
-                                                numOfSigns,
-                                                moreCoding: "blabla"
+                                                numOfSigns
                                             });
                                         });
                                     })
@@ -208,21 +191,16 @@ app.get("/profile", (req, res) => {
         res.redirect("/register");
     } else {
         res.render("profile", {
-            layout: "main",
-            someInfo: "some info"
+            layout: "main"
         });
     }
 });
 
 app.post("/profile", (req, res) => {
     console.log("**********************************POST/profile");
-    console.log("req.session.userId: ", req.session.userId);
     let age = req.body.age;
     let city = req.body.city;
-    console.log("un fixHttp: ", req.body.url);
     let url = fixHttp(req.body.url);
-    console.log("fixHttp: ", url);
-    // console.log("age, city, url: ", age, city, url);
     db.addProfile(age, city, url, req.session.userId)
         .then(() => {
             res.redirect("/petition");
@@ -238,22 +216,15 @@ app.post("/profile", (req, res) => {
 // 4. PETITION
 app.get("/petition", (req, res) => {
     console.log("********************************GET/petition");
-    console.log("req.session.userId: ", req.session.userId);
-    console.log("req.session.signed: ", req.session.signed);
     if (req.session.signed == false && req.session.userId) {
-        console.log("req.session.signed: ", req.session.signed);
-
         db.getName(req.session.userId)
             .then(result => {
                 let first = result.rows[0].first;
                 let last = result.rows[0].last;
-                console.log("first last", first);
-                console.log(last);
                 res.render("petition", {
                     layout: "main",
                     first,
-                    last,
-                    moreCoding: "more"
+                    last
                 });
             })
             .catch(err => {
@@ -273,14 +244,11 @@ app.get("/petition", (req, res) => {
 app.post("/petition", (req, res) => {
     console.log("********************************POST/petition");
     var sign = req.body.sign;
-    console.log("signature: ", sign);
     if (sign !== "empty") {
         req.session.userId;
         req.session.signed = true;
         db.addData(sign, req.session.userId)
             .then(results => {
-                console.log("rows in add data: ", results.rows[0]);
-
                 db.getName(req.session.userId)
                     .then(result => {
                         console.log("results.rows[0]", results.rows[0]);
@@ -288,15 +256,12 @@ app.post("/petition", (req, res) => {
                         let last = result.rows[0].last;
                         db.getAll().then(fromSignatures => {
                             let numOfSigns = fromSignatures.rows.length;
-                            console.log(numOfSigns);
-                            // res.redirect("/signers");
                             res.render("thanks", {
                                 layout: "main",
                                 first,
                                 last,
                                 sign,
-                                numOfSigns,
-                                moreCoding: "blabla"
+                                numOfSigns
                             });
                         });
                     })
@@ -317,8 +282,6 @@ app.post("/petition", (req, res) => {
             .then(result => {
                 let first = result.rows[0].first;
                 let last = result.rows[0].last;
-                console.log("first last", first);
-                console.log(last);
                 res.render("petition", {
                     layout: "main",
                     first,
@@ -340,7 +303,6 @@ app.get("/thanks", (req, res) => {
 
     db.checkSign(req.session.userId)
         .then(val => {
-            console.log("val.rows.length: ", val.rows.length);
             if (val.rows.length > 0) {
                 db.getName(req.session.userId)
                     .then(name => {
@@ -382,7 +344,6 @@ app.get("/signers", (req, res) => {
     console.log(
         "GET/signers****************************************************"
     );
-    console.log("req.session.signed: ", req.session.signed);
     if (req.session.userId == undefined) {
         req.session.signed == false;
         res.redirect("/register");
@@ -393,11 +354,9 @@ app.get("/signers", (req, res) => {
             .then(results => {
                 let allInfo = results.rows;
                 let numOfSigns = results.rows.length;
-                console.log("allInfo: ", allInfo);
                 res.render("signers", {
                     allInfo,
-                    numOfSigns,
-                    moreCoding: "blabla"
+                    numOfSigns
                 });
             })
             .catch(err => {
@@ -410,7 +369,6 @@ app.get("/sigers", (req, res) => {
     db.getAllInfo()
         .then(datas => {
             let data = datas.rows;
-            console.log("data.rows", data.rows);
             res.render("sigers", {
                 layout: "main",
                 data
@@ -468,37 +426,25 @@ app.post("/deleteaccount", (req, res) => {
 });
 
 app.get("/deleteaccount", (req, res) => {
-    // if (req.session.userId == undefined) {
     res.redirect("/register");
-    // } else {
-    //     res.redirect("/edit");
-    // }
 });
 
 ///////////////////////////////////////////////////////////////////////////////
 // 8. EDIT
 app.get("/edit", (req, res) => {
     console.log("*************************************GET/edit");
-    console.log(req.session.userId);
     if (req.session.userId == undefined) {
         res.redirect("/register");
     } else if (req.session.signed == false) {
         db.getAllForEdit(req.session.userId)
             .then(allInfo => {
-                //         console.log("results for specific users: ", result);
                 let age = allInfo.rows[0].age;
                 let city = allInfo.rows[0].city;
-
-                console.log("allInfo.rows[0].url: ", allInfo.rows[0].url);
                 let url = fixHttp(allInfo.rows[0].url);
-                console.log("url Fixed: ", url);
-
                 let password = allInfo.rows[0].password;
                 let first = allInfo.rows[0].first;
                 let last = allInfo.rows[0].last;
                 let email = allInfo.rows[0].email;
-                console.log("all info in /edits: ", allInfo);
-
                 res.render("edit", {
                     layout: "main",
                     age,
@@ -518,12 +464,7 @@ app.get("/edit", (req, res) => {
             .then(allInfo => {
                 let age = allInfo.rows[0].age;
                 let city = allInfo.rows[0].city;
-
-                console.log("allInfo.rows[0].url: ", allInfo.rows[0].url);
-                console.log(allInfo.rows[0].url.startsWith("https://"));
                 let url = fixHttp(allInfo.rows[0].url);
-                console.log("url Fixed: ", url);
-
                 let password = allInfo.rows[0].password;
                 let first = allInfo.rows[0].first;
                 let last = allInfo.rows[0].last;
@@ -531,8 +472,6 @@ app.get("/edit", (req, res) => {
                 db.checkSign(req.session.userId)
                     .then(val => {
                         let sign = val.rows[0].signature;
-                        //            console.log("get sign in /edit: ", sign);
-
                         res.render("edit", {
                             layout: "main",
                             sign,
@@ -557,7 +496,6 @@ app.get("/edit", (req, res) => {
 
 app.post("/edit", (req, res) => {
     console.log("**************************POST/edit");
-    console.log("req.session.userId: ", req.session.userId);
     let age = req.body.age;
     let city = req.body.city;
     let url = fixHttp(req.body.url);
@@ -693,10 +631,6 @@ app.post("/edit", (req, res) => {
                                     db.checkSign(req.session.userId)
                                         .then(val => {
                                             let sign = val.rows[0].signature;
-                                            console.log(
-                                                "get sign in /edit: ",
-                                                sign
-                                            );
 
                                             res.render("edit", {
                                                 layout: "main",
@@ -732,28 +666,19 @@ app.post("/edit", (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////
 // 9.  / ROUTE
 app.get("/", (req, res) => {
-    // console.log("reg.session berfore settiong:", req.session);
-    // req.session.peppermint = "<3";
-    // console.log("reg.session after settiong:", req.session);
     res.redirect("/register");
 });
 ////////////////////////////////////////////////////////////////////////////////
 // 10. CITIES DYNAMIC ROUTE
 app.post("/signersin", (req, res) => {
     console.log("*************************GET/signersin");
-    // let city = req.params.city;
-    // let city = "Berlin";
     let city = req.body.button;
-    console.log("city!!!!: ", city);
 
     if (req.session.userId && req.session.signed) {
         db.getPeopleByCity(city)
             .then(result => {
-                console.log("getPeopleByCity: ", result.rows);
                 let cities = result.rows;
                 let cityOne = result.rows[0].city;
-                console.log("city in get people by: ", city);
-                console.log("city One: ", cityOne);
 
                 res.render("city", {
                     cities,
@@ -762,7 +687,6 @@ app.post("/signersin", (req, res) => {
             })
             .catch(err => {
                 console.log("err in getPeopleByCity: ", err);
-                // res.redirect("/thanks");
             });
     } else if (req.session.userId == undefined) {
         req.session.signed = undefined;
@@ -779,13 +703,5 @@ app.get("/logout", (req, res) => {
     req.session.signed = undefined;
     res.redirect("/login");
 });
-
-// app.get("/test/:test", (req, res) => {
-//     let test = req.params.test;
-//     console.log("test!!!: ", test);
-//     // res.render("city", {
-//     //     city: "Berlin"
-//     // });
-// });
 
 app.listen(process.env.PORT || 8090, () => console.log("running"));
