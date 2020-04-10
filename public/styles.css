@@ -160,12 +160,14 @@ a {
     margin-top: 50px;
     margin-bottom: 20px;
     background-color: rgb(0, 0, 0, 0.4);
+    border: 2px solid red;
 }
 .treelogocontainer {
     grid-area: treelogocontainer;
     display: flex;
     justify-content: center;
     border: 2px solid yellow;
+
 }
 .descriptioncontainer {
     grid-area: descriptioncontainer;
