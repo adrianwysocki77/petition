@@ -167,6 +167,7 @@ a {
     display: flex;
     justify-content: center;
     border: 2px solid yellow;
+    height: 200px;
 
 }
 .descriptioncontainer {
@@ -428,7 +429,7 @@ input::placeholder {
     }
 
     .gridcontainer {
-        margin-top: 0px;
+        /* margin-top: 0px; */
         margin-bottom: 20px;
     }
 }
