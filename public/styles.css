@@ -185,6 +185,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 100px;
 }
 /* //////////////// */
 .loginflex {
@@ -197,6 +198,7 @@ a {
 }
 .treelogo {
     width: 250px;
+    border: 2px solid pink;
 }
 .logintext {
     color: white;
@@ -341,6 +343,9 @@ input::placeholder {
 .signcontainer {
     display: flex;
     justify-content: center;
+}
+.inputdesc {
+    color: white
 }
 /* ////////////////////////////////////////////////////////////////////////// */
 /* SIGNERS */
