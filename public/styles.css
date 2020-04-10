@@ -160,13 +160,11 @@ a {
     margin-top: 50px;
     margin-bottom: 20px;
     background-color: rgb(0, 0, 0, 0.4);
-    border: 2px solid red;
 }
 .treelogocontainer {
     grid-area: treelogocontainer;
     display: flex;
     justify-content: center;
-    border: 2px solid yellow;
     height: 200px;
 
 }
@@ -182,7 +180,6 @@ a {
     flex-direction: column;
     text-align: center;
     font-size: 18px;
-    border: 2px solid blue;
 }
 
 .inputscontainer {
@@ -203,7 +200,6 @@ a {
 }
 .treelogo {
     width: 250px;
-    border: 2px solid pink;
 }
 .logintext {
     color: white;
@@ -429,7 +425,7 @@ input::placeholder {
     }
 
     .gridcontainer {
-        /* margin-top: 0px; */
+        margin-top: 0px;
         margin-bottom: 20px;
     }
 }
