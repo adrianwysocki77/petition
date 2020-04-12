@@ -41,6 +41,7 @@ app.use(
 
 app.use(
     express.urlencoded({
+        //middleware
         //to sie uruchamia przy kazdych ruchu // to lapie input urzytkownika
         extended: false // i robi z tego obj
     })
