@@ -16,12 +16,11 @@ app.set("view engine", "handlebars");
 ////////////////////////////////////////////////////////////////////////////////
 ///EXPRESS
 app.use(express.static("./public"));
-app.use(
-    express.urlencoded({
-        //to sie uruchamia przy kazdych ruchu // to lapie input urzytkownika
-        extended: false // i robi z tego obj
-    })
-);
+
+//COOKIE HELMET
+
+const helmet = require("helmet");
+app.use(helmet());
 
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -40,8 +39,15 @@ app.use(
     })
 );
 
+app.use(
+    express.urlencoded({
+        //to sie uruchamia przy kazdych ruchu // to lapie input urzytkownika
+        extended: false // i robi z tego obj
+    })
+);
+
 ///////////////////////////////////////////////////////////////////////////////
-// COOKIE SAFETY
+// COOKIE SAFETY VOL2
 app.use(csurf());
 
 app.use(function(req, res, next) {
