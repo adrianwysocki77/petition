@@ -42,7 +42,7 @@ There is possibility to see all signers.
 
 ---
 
-If id will be necessary you can delete your signature or change your profile informations.
+If it will be necessary you can delete your signature or change your profile informations.
 
 ![img](./images_readme/5.png)
 
