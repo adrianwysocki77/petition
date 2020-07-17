@@ -18,6 +18,8 @@ Backend is build with Node.js, Express.js, and PostgreSQL. Data base is created 
 Everything is protected from CSURF attacks and SQL injections.
 For rendering different HTML templates is used Handlebars.js
 
+---
+
 ### Features
 
 To sing the petition you need to register creating your account.
