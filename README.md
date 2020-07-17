@@ -2,6 +2,8 @@
 
 Sign petition to save the trees!
 
+http://finalpetition.herokuapp.com/register
+
 ---
 
 ### Frontend
