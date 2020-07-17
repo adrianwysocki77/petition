@@ -47,5 +47,3 @@ Page is fully responsive.
 ![img](./images_readme/6.png)
 
 ![img](./images_readme/7.png)
-
----
