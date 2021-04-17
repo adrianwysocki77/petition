@@ -1,29 +1,19 @@
-///////////////////////////////////////////////////////////////////////////////
 const db = require("./db");
 const express = require("express");
-const app = express();
 const hb = require("express-handlebars");
-////////////////////////////////////////////////////////////////////////////////
-// require encryption
 const bcrypt = require("./bcrypt");
-////////////////////////////////////////////////////////////////////////////////
-// require checking url
 const { fixHttp } = require("./checkurl");
-////////////////////////////////////////////////////////////////////////////////
-///HANDLEBARS
-app.engine("handlebars", hb());
-app.set("view engine", "handlebars");
-////////////////////////////////////////////////////////////////////////////////
-///EXPRESS
-app.use(express.static("./public"));
-
-//COOKIE HELMET
-
 const helmet = require("helmet");
-app.use(helmet());
-
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
+
+const app = express();
+
+app.engine("handlebars", hb());
+app.set("view engine", "handlebars");
+app.use(express.static("./public"));
+app.use(helmet());
+
 let secrets;
 
 if (process.env.NODE_ENV === "production") {
@@ -41,13 +31,10 @@ app.use(
 
 app.use(
     express.urlencoded({
-        //middleware
-        //to sie uruchamia przy kazdych ruchu // to lapie input urzytkownika
         extended: false // i robi z tego obj
     })
 );
 
-///////////////////////////////////////////////////////////////////////////////
 // COOKIE SAFETY VOL2
 app.use(csurf());
 
@@ -57,10 +44,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-////////////////////////////////////////////////////////////////////////////////
-// 1. REGISTER
+// REGISTER
 app.get("/register", (req, res) => {
-    console.log("*******************************GET/register");
     res.render("register", {
         layout: "main",
         loginRegister: true
@@ -68,7 +53,6 @@ app.get("/register", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
-    console.log("******************************POST/register");
     const first = req.body.first;
     const last = req.body.last;
     const email = req.body.email;
@@ -99,7 +83,7 @@ app.post("/register", (req, res) => {
                             res.redirect("/profile");
                         })
                         .catch(err => {
-                            console.log("err in add emty user_profiles: ", err);
+                            console.log("err in add empty user_profiles: ", err);
                         });
                 })
                 .catch(err => {
@@ -115,11 +99,10 @@ app.post("/register", (req, res) => {
         });
     }
 });
-////////////////////////////////////////////////////////////////////////////////
-// 2. LOGIN
 
+
+// LOGIN
 app.get("/login", (req, res) => {
-    console.log("******************************GET/login");
 
     res.render("login", {
         layout: "main",
@@ -128,7 +111,6 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-    console.log("******************************POST/login");
 
     let email = req.body.email;
     let password = req.body.password;
@@ -190,10 +172,9 @@ app.post("/login", (req, res) => {
             });
         });
 });
-////////////////////////////////////////////////////////////////////////////////
-// 3. PROFILE
+
+// PROFILE
 app.get("/profile", (req, res) => {
-    console.log("**********************************GET/profile");
     if (req.session.userId == undefined) {
         res.redirect("/register");
     } else {
@@ -204,7 +185,6 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/profile", (req, res) => {
-    console.log("**********************************POST/profile");
     let age = req.body.age;
     let city = req.body.city;
     let url = fixHttp(req.body.url);
@@ -219,10 +199,9 @@ app.post("/profile", (req, res) => {
             });
         });
 });
-////////////////////////////////////////////////////////////////////////////////
-// 4. PETITION
+
+// PETITION
 app.get("/petition", (req, res) => {
-    console.log("********************************GET/petition");
     if (req.session.signed == false && req.session.userId) {
         db.getName(req.session.userId)
             .then(result => {
@@ -249,8 +228,8 @@ app.get("/petition", (req, res) => {
 });
 
 app.post("/petition", (req, res) => {
-    console.log("********************************POST/petition");
-    var sign = req.body.sign;
+
+    let sign = req.body.sign;
     if (sign !== "empty") {
         req.session.userId;
         req.session.signed = true;
@@ -261,16 +240,7 @@ app.post("/petition", (req, res) => {
                         console.log("results.rows[0]", results.rows[0]);
                         let first = result.rows[0].first;
                         let last = result.rows[0].last;
-                        // db.getAll().then(fromSignatures => {
-                        //     let numOfSigns = fromSignatures.rows.length;
-                        //     res.render("thanks", {
-                        //         layout: "main",
-                        //         first,
-                        //         last,
-                        //         sign,
-                        //         numOfSigns
-                        //     });
-                        // });
+
                         res.redirect("/thanks");
                     })
                     .catch(err => {
@@ -304,10 +274,9 @@ app.post("/petition", (req, res) => {
             });
     }
 });
-////////////////////////////////////////////////////////////////////////////////
-// 5. THANKS
+
+// THANKS
 app.get("/thanks", (req, res) => {
-    console.log("******************************GET/thanks");
 
     db.checkSign(req.session.userId)
         .then(val => {
@@ -346,12 +315,10 @@ app.get("/thanks", (req, res) => {
             req.render("petition");
         });
 });
-////////////////////////////////////////////////////////////////////////////////
-// 6. SIGNERS
+
+// SIGNERS
 app.get("/signers", (req, res) => {
-    console.log(
-        "GET/signers****************************************************"
-    );
+
     if (req.session.userId == undefined) {
         req.session.signed == false;
         res.redirect("/register");
@@ -384,8 +351,8 @@ app.get("/sigers", (req, res) => {
         })
         .catch(err => console.log("err: ", err));
 });
-///////////////////////////////////////////////////////////////////////////////
-// 7. DELETE SIGNATURE BUTTON IN THANKS AND PROFILE / DELETE ACCOUNT
+
+// DELETE SIGNATURE BUTTON IN THANKS AND PROFILE / DELETE ACCOUNT
 app.post("/delete", (req, res) => {
     console.log("***********************************************POST/delete");
 
@@ -400,9 +367,6 @@ app.post("/delete", (req, res) => {
 });
 
 app.post("/deleteaccount", (req, res) => {
-    console.log(
-        "***********************************************POST/deleteaccount" //zrobic z alertem czy na pewno chcesz usunac profil
-    );
 
     db.deleteSignature(req.session.userId)
         .then(() => {
@@ -437,10 +401,8 @@ app.get("/deleteaccount", (req, res) => {
     res.redirect("/register");
 });
 
-///////////////////////////////////////////////////////////////////////////////
-// 8. EDIT
+// EDIT
 app.get("/edit", (req, res) => {
-    console.log("*************************************GET/edit");
     if (req.session.userId == undefined) {
         res.redirect("/register");
     } else if (req.session.signed == false) {
@@ -503,7 +465,6 @@ app.get("/edit", (req, res) => {
 });
 
 app.post("/edit", (req, res) => {
-    console.log("**************************POST/edit");
     let age = req.body.age;
     let city = req.body.city;
     let url = fixHttp(req.body.url);
@@ -516,7 +477,6 @@ app.post("/edit", (req, res) => {
         first == "" ||
         last == "" ||
         email == "" ||
-        // password == "" ||
         first.startsWith(" ") ||
         last.startsWith(" ") ||
         email.startsWith(" ") ||
@@ -620,7 +580,6 @@ app.post("/edit", (req, res) => {
                                     console.log(err);
                                     res.redirect("/edit");
                                 });
-                            //
                         })
                         .catch(err => {
                             console.log(
@@ -671,15 +630,15 @@ app.post("/edit", (req, res) => {
             });
     }
 });
-////////////////////////////////////////////////////////////////////////////////
-// 9.  / ROUTE
+
+// / ROUTE
 app.get("/", (req, res) => {
     res.redirect("/register");
 });
-////////////////////////////////////////////////////////////////////////////////
-// 10. CITIES DYNAMIC ROUTE
+
+
+// CITIES DYNAMIC ROUTE
 app.post("/signersin", (req, res) => {
-    console.log("*************************GET/signersin");
     let city = req.body.button;
 
     if (req.session.userId && req.session.signed) {
@@ -704,8 +663,7 @@ app.post("/signersin", (req, res) => {
     }
 });
 
-////////////////////////////////////////////////////////////////////////////////
-// 11. LOGOUT
+// LOGOUT
 app.get("/logout", (req, res) => {
     req.session.userId = undefined;
     req.session.signed = undefined;
