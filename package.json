@@ -21,6 +21,7 @@
         "express-handlebars": "^3.0.0",
         "helmet": "^3.23.3",
         "jest": "^24.5.0",
+        "prettier": "^2.2.1",
         "redis": "^2.6.2",
         "spiced-pg": "^1.0.4",
         "supertest": "^4.0.2"
