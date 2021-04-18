@@ -22,7 +22,7 @@ exports.showAllFromCity = function (city) {
 exports.addData = function (signature, user_id) {
   return db.query(
     `INSERT INTO signatures (signature, user_id)
-        VALUES ($1, $2) RETURNING user_id`, ///zapobiega atakom
+        VALUES ($1, $2) RETURNING user_id`,
     [signature, user_id]
   );
 };
